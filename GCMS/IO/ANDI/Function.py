@@ -60,15 +60,15 @@ def ANDI_reader(file_name):
 
     print " -> Reading netCDF file '%s'" % (file_name)
     
-    scan_list = []
+    scan_list = list()
 #     mass = np.array(dataset.variables[__MASS_STRING])
 #     intensity =  np.array(dataset.variables[__INTENSITY_STRING])
     mass_values = np.array(dataset.variables[__MASS_STRING])
-    mass_list = []
+    mass_list = list()
     mass_previous = mass_values[0]
     mass_list.append(mass_previous)
     intensity_values = np.array(dataset.variables[__INTENSITY_STRING])
-    intensity_list = []
+    intensity_list = list()
     intensity_previous = intensity_values[0]
     intensity_list.append(intensity_previous)
     
@@ -87,8 +87,8 @@ def ANDI_reader(file_name):
             scan_list.append(Scan(mass_list, intensity_list))
             mass_previous = mass_values[i + 1]
             intensity_previous = intensity_values[i + 1]
-            mass_list = []
-            intensity_list = []
+            mass_list = list()
+            intensity_list = list()
             mass_list.append(mass_previous)
             intensity_list.append(intensity_previous)
     # store final scan
